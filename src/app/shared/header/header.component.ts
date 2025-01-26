@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { PageInfoService } from '../../services/page-info.service';
-import { PageInfo } from '../../interfaces/page-info';
+import { PageInfo } from '../../interfaces/page-info.interface';
 
 @Component({
   selector: 'app-header',

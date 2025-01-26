@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { PageInfo, TeamWorkMember } from '../interfaces/page-info';
+import { PageInfo, TeamWorkMember } from '../interfaces/page-info.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,9 @@ export class PageInfoService {
   teamWork: TeamWorkMember[] = [];
   teamWorkloaded: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getPageInfo();
+  }
 
   getPageInfo(): void {
     this.http.get<PageInfo>('/assets/data/data-page.json')

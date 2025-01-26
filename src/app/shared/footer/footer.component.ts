@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { PageInfo } from '../../interfaces/page-info';
+import { PageInfo } from '../../interfaces/page-info.interface';
 import { PageInfoService } from '../../services/page-info.service';
 
 @Component({
