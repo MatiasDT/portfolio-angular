@@ -11,6 +11,10 @@ import { ProductsIdx } from '../../interfaces/products.interface';
 })
 export class PortfolioComponent {
 
+  get loadingProducts(): boolean {
+    return this.productsService.loading;
+  }
+
   get products(): ProductsIdx[] {
     return this.productsService.products;
   }
