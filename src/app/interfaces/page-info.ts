@@ -5,10 +5,13 @@ export interface PageInfo {
   author_page?: string;
   linkedin?: string;
   github?: string;
-  team_work?: Teamwork[];
+  team_work?: TeamWorkMember[];
 }
 
-interface Teamwork {
-  name?: string;
-  email?: string;
+export interface TeamWorkMember {
+  nombre?: string;
+  subtitulo?: string;
+  frase?: string;
+  twitter?: string;
+  image_url?: string;
 }
