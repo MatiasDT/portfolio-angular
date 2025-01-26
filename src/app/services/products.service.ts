@@ -1,6 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ProductsIdx } from '../interfaces/products.interface';
+import { HttpClient } from '@angular/common/http';
+
+import { Observable } from 'rxjs';
+
+import { Product, ProductsIdx } from '../interfaces/products.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +23,9 @@ export class ProductsService {
       this.products = res;
       this.loading = false;
     });
+  }
+
+  getProduct(id: string): Observable<Product> {
+    return this.http.get<Product>(`https://portfolio-e1f9d-default-rtdb.firebaseio.com/productos/${id}.json`);
   }
 }

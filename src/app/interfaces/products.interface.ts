@@ -5,7 +5,7 @@ export interface ProductsIdx {
   url: string;
 }
 
-export interface Products {
+export interface Product {
   categoria: string;
   desc1: string;
   desc2: string;
