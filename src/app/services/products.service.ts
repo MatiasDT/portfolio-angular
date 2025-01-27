@@ -10,22 +10,43 @@ import { Product, ProductsIdx } from '../interfaces/products.interface';
 })
 export class ProductsService {
 
-  products: ProductsIdx[] = [];
   loading: boolean = true;
+  products: ProductsIdx[] = [];
+  filterProducts: ProductsIdx[] = [];
 
   constructor(private http: HttpClient) {
     this.getProducts();
   }
 
-  getProducts(): void {
-    this.http.get<ProductsIdx[]>('https://portfolio-e1f9d-default-rtdb.firebaseio.com/productos_idx.json')
-    .subscribe((res: ProductsIdx[]) => {
-      this.products = res;
-      this.loading = false;
-    });
+  getProducts(): Promise<void> {
+
+    return new Promise<void>((resolve, reject) => {
+      this.http.get<ProductsIdx[]>('https://portfolio-e1f9d-default-rtdb.firebaseio.com/productos_idx.json')
+      .subscribe((res: ProductsIdx[]) => {
+        this.products = res;
+        this.loading = false;
+        resolve();
+        });
+      });
+  }
+
+  getFilterProducts(value: string): void {
+    if (this.products.length === 0) {
+      this.getProducts().then(() => {
+        this.filterProductsByTitle(value);
+      });
+    } else {
+      this.filterProductsByTitle(value);
+    }
   }
 
   getProduct(id: string): Observable<Product> {
     return this.http.get<Product>(`https://portfolio-e1f9d-default-rtdb.firebaseio.com/productos/${id}.json`);
+  }
+
+  private filterProductsByTitle(value: string): void {
+    this.filterProducts = this.products.filter(product => {
+      return product.titulo.toLowerCase().includes(value.toLowerCase());
+    });
   }
 }

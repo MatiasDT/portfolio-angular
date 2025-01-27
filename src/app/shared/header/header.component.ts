@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { PageInfoService } from '../../services/page-info.service';
 import { PageInfo } from '../../interfaces/page-info.interface';
+import { PageInfoService } from '../../services/page-info.service';
 
 @Component({
   selector: 'app-header',
@@ -16,5 +17,16 @@ export class HeaderComponent {
     return this.pageInfoService.info;
   }
 
-  constructor(private pageInfoService: PageInfoService) {}
+  constructor(
+    private router: Router,
+    private pageInfoService: PageInfoService
+  ) {}
+
+  searchProducts(value: string) {
+    if (value.length < 1) {
+      this.router.navigate(['']);
+    }
+
+    this.router.navigate(['/search', value]);
+  }
 }
