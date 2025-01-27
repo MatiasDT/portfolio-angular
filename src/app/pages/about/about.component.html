@@ -1,6 +1,6 @@
 <div *ngIf="teamWorkLoaded" class="ae-grid au-xs-ta-center au-mb-4">
   <div *ngFor="let teamWorkMember of teamWork" class="animate__animated animate__fadeInDown ae-grid__item item-lg-4 ae-kappa au-mb-3">
-    <img [src]="teamWorkMember.image_url" alt="" class="au-mb-3">
+    <img src="assets/img/{{ teamWorkMember.image_url }}" alt="" class="au-mb-3">
     <h5 class="ae-u-bolder au-mt-2">{{ teamWorkMember.nombre}}</h5>
     <p class="ae-u-bolder au-mb-3">{{ teamWorkMember.subtitulo }}</p>
     <p class="au-lg-ta-left au-mb-3 au-pl-4 au-pr-4">{{ teamWorkMember.frase }}</p>
@@ -29,7 +29,7 @@
   </div>
 </div>
 <p class="au-flex au-pt-4 group-buttons">
-  <a href="portfolio.html" class="au-mt-4 arrow-button arrow-button--right arrow-button--out">
+  <a href="" class="au-mt-4 arrow-button arrow-button--right arrow-button--out">
     View Our Portfolio
     <span class="arrow-cont"><svg><use xlink:href="assets/img/symbols.svg#arrow"></use></svg></span>
   </a>
