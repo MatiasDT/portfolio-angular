@@ -18,7 +18,7 @@ export class PageInfoService {
   }
 
   getPageInfo(): void {
-    this.http.get<PageInfo>('/assets/data/data-page.json')
+    this.http.get<PageInfo>('./assets/data/data-page.json')
     .subscribe((res: PageInfo) => {
       this.info = res;
       this.loaded = true;
